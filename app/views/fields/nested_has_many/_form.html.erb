@@ -1,7 +1,7 @@
-<fieldset class="field-unit--nested">
+<fieldset class="field-unit--nested field--<%= field.association_name.singularize %>">
   <legend><%= f.label field.attribute %></legend>
   <%= f.fields_for field.association_name do |nested_form| %>
-      <%= render(
+    <%= render(
         partial: "fields/nested_has_many/fields",
         locals: {
           f: nested_form,
@@ -9,7 +9,6 @@
         },
       ) %>
   <% end %>
-
   <div>
     <%= link_to_add_association(
       I18n.t("administrate.fields.nested_has_many.add", resource: field.association_name.singularize.titleize),
